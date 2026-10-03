@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>UK Property Exposure Project</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>UK Exposure Data Project</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14572,12 +14572,44 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     </script>
     <!-- End of mathjax configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="UK-Commercial-Property-SOV:-Exposure-Scrubbing-&amp;-Pre-Model-Readiness">UK Commercial Property SOV: Exposure Scrubbing &amp; Pre-Model Readiness<a class="anchor-link" href="#UK-Commercial-Property-SOV:-Exposure-Scrubbing-&amp;-Pre-Model-Readiness">&#182;</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><strong>Overview:</strong> Synthetic 100-location SOV · Python (pandas) · Flood exposure · Prepared for CAT-model ingestion</p>
+<p><strong>Scope:</strong> Data validation, TIV reconciliation, accumulation and concentration analysis, and an open-exceptions log. This notebook stops before model execution.</p>
+<p><strong>Key Findings:</strong></p>
+<ol>
+<li><strong>Geographic concentration:</strong> the top 5 cities hold 46.0% of TIV (Hull, Coventry, Leeds, Warrington, Preston) and the top 5 counties hold 50.7%.</li>
+<li><strong>Flood exposure:</strong> 35 locations sit in the High flood band, carrying £1.12bn (39.3% of TIV). Including Medium, 91% of TIV is in elevated flood bands.</li>
+<li><strong>Occupancy hotspot:</strong> 6 data centres make up 24.7% of TIV (£707.9m), none in the Low band. The largest single High-risk location is LOC077 (Hull Data Centre, £160.7m, 5.6% of the portfolio).</li>
+<li><strong>Data quality:</strong> duplicate Location IDs were corrected (2 records). Six exceptions remain open: 2 missing attributes, 2 TIV mismatches (LOC003 +£3.0m, LOC073 −£0.5m) and 2 construction categories needing clarification.</li>
+<li><strong>Readiness:</strong> the SOV is not model-ready until the open exceptions are cleared with the broker. Nothing has been imputed.</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[51]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -14594,7 +14626,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[52]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;England_Flood_SOV_100_Locations.xlsx&quot;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;SOV_100&quot;</span><span class="p">)</span>
@@ -14610,7 +14642,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[53]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -14631,7 +14663,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[53]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
 
 
 
@@ -14815,7 +14847,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[54]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="o">.</span><span class="n">shape</span>
@@ -14836,7 +14868,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[54]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
 
 
 
@@ -14856,7 +14888,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[55]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
@@ -14877,7 +14909,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[55]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
 
 
 
@@ -14980,7 +15012,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[217]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Currency&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;Great British Pound&quot;</span>
@@ -15019,7 +15051,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[56]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Location_ID&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
@@ -15040,7 +15072,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[56]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
 
 
 
@@ -15073,7 +15105,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>As the total number of unique records are 98, we may some duplicate locations in the dataset.</p>
+<p>As the total number of unique records is 98, we may have some duplicate locations in the dataset.</p>
 
 </div>
 </div>
@@ -15083,7 +15115,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[57]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">dup_records</span><span class="o">=</span><span class="n">sov</span><span class="p">[</span><span class="n">sov</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Location_ID&quot;</span><span class="p">],</span><span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
@@ -15105,7 +15137,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[57]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
 
 
 
@@ -15139,7 +15171,6 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
       <th>Flood_Risk_Band</th>
       <th>Primary_Flood_Source</th>
       <th>...</th>
-      <th>BI_TIV</th>
       <th>Total_TIV</th>
       <th>Reported_Total_TIV</th>
       <th>TIV_Check</th>
@@ -15149,6 +15180,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
       <th>Burglar_Alarm</th>
       <th>Vacant</th>
       <th>BI_Share_of_TIV_Pct</th>
+      <th>Currency</th>
     </tr>
   </thead>
   <tbody>
@@ -15165,7 +15197,6 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
       <td>Medium</td>
       <td>Surface Water</td>
       <td>...</td>
-      <td>1550000</td>
       <td>20000000</td>
       <td>20000000</td>
       <td>OK</td>
@@ -15175,6 +15206,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
       <td>None</td>
       <td>No</td>
       <td>7.75</td>
+      <td>Great British Pound</td>
     </tr>
     <tr>
       <th>24</th>
@@ -15189,7 +15221,6 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
       <td>Medium</td>
       <td>Rivers &amp; Sea</td>
       <td>...</td>
-      <td>1450000</td>
       <td>14100000</td>
       <td>14100000</td>
       <td>OK</td>
@@ -15199,6 +15230,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
       <td>Central</td>
       <td>No</td>
       <td>10.28</td>
+      <td>Great British Pound</td>
     </tr>
     <tr>
       <th>97</th>
@@ -15213,7 +15245,6 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
       <td>Medium</td>
       <td>Surface Water</td>
       <td>...</td>
-      <td>7000000</td>
       <td>29900000</td>
       <td>29900000</td>
       <td>OK</td>
@@ -15223,6 +15254,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
       <td>Central</td>
       <td>No</td>
       <td>23.41</td>
+      <td>Great British Pound</td>
     </tr>
     <tr>
       <th>98</th>
@@ -15237,7 +15269,6 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
       <td>High</td>
       <td>Rivers &amp; Sea</td>
       <td>...</td>
-      <td>5150000</td>
       <td>28400000</td>
       <td>28400000</td>
       <td>OK</td>
@@ -15247,10 +15278,11 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
       <td>Local</td>
       <td>No</td>
       <td>18.13</td>
+      <td>Great British Pound</td>
     </tr>
   </tbody>
 </table>
-<p>4 rows × 27 columns</p>
+<p>4 rows × 28 columns</p>
 </div>
 </div>
 
@@ -15288,7 +15320,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[58]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">dup_records</span><span class="p">[[</span><span class="s2">&quot;Location_ID&quot;</span><span class="p">,</span> <span class="s2">&quot;Building_ID&quot;</span><span class="p">,</span> <span class="s2">&quot;Building_Name&quot;</span><span class="p">,</span>
@@ -15310,7 +15342,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[58]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
 
 
 
@@ -15462,16 +15494,27 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[59]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">97</span><span class="p">,</span><span class="s2">&quot;Location_ID&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;LOC098&quot;</span>
-<span class="n">sov</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">98</span><span class="p">,</span><span class="s2">&quot;Location_ID&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;LOC099&quot;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Re-derive Location_ID from the Building_ID sequence (B098 -&gt; LOC098)</span>
+<span class="n">expected_id</span> <span class="o">=</span> <span class="s2">&quot;LOC&quot;</span> <span class="o">+</span> <span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Building_ID&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d+)&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">fix_mask</span> <span class="o">=</span> <span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Location_ID&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">expected_id</span>
+
+<span class="c1"># Audit trail: keep the original ID before overwriting</span>
+<span class="n">id_fix_log</span> <span class="o">=</span> <span class="p">(</span><span class="n">sov</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">fix_mask</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Building_ID&quot;</span><span class="p">,</span> <span class="s2">&quot;Location_ID&quot;</span><span class="p">]]</span>
+              <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Location_ID&quot;</span><span class="p">:</span> <span class="s2">&quot;Original_Location_ID&quot;</span><span class="p">})</span>
+              <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Corrected_Location_ID</span><span class="o">=</span><span class="n">expected_id</span><span class="p">[</span><span class="n">fix_mask</span><span class="p">]))</span>
+
+<span class="n">sov</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">fix_mask</span><span class="p">,</span> <span class="s2">&quot;Location_ID&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">expected_id</span><span class="p">[</span><span class="n">fix_mask</span><span class="p">]</span>
+
+<span class="k">assert</span> <span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Location_ID&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">is_unique</span><span class="p">,</span> <span class="s2">&quot;Duplicate Location_IDs remain&quot;</span>
+<span class="n">id_fix_log</span>
 </pre></div>
 
      </div>
@@ -15479,12 +15522,74 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Building_ID</th>
+      <th>Original_Location_ID</th>
+      <th>Corrected_Location_ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>97</th>
+      <td>B098</td>
+      <td>LOC010</td>
+      <td>LOC098</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>B099</td>
+      <td>LOC025</td>
+      <td>LOC099</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[60]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Location_ID&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
@@ -15505,7 +15610,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[60]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
 
 
 
@@ -15548,7 +15653,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[159]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -15569,7 +15674,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[159]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
 
 
 
@@ -15602,10 +15707,7 @@ Smoke_Detection           0
 Burglar_Alarm             0
 Vacant                    0
 BI_Share_of_TIV_Pct       0
-cal_TIV                   0
-TIV_check_cal             0
-TIV_check_rep             0
-BI_share_check            0
+Currency                  0
 dtype: int64</pre>
 </div>
 
@@ -15632,7 +15734,7 @@ dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[160]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">missing_value_count</span> <span class="o">=</span> <span class="n">sov</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -15654,7 +15756,7 @@ dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[160]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
 
 
 
@@ -15685,7 +15787,7 @@ dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[62]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">missing_records</span><span class="o">=</span><span class="n">sov</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Year_Built&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span> <span class="o">|</span> <span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Construction_Code&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
@@ -15707,7 +15809,7 @@ dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[62]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[17]:</div>
 
 
 
@@ -15741,7 +15843,6 @@ dtype: int64</pre>
       <th>Flood_Risk_Band</th>
       <th>Primary_Flood_Source</th>
       <th>...</th>
-      <th>BI_TIV</th>
       <th>Total_TIV</th>
       <th>Reported_Total_TIV</th>
       <th>TIV_Check</th>
@@ -15751,6 +15852,7 @@ dtype: int64</pre>
       <th>Burglar_Alarm</th>
       <th>Vacant</th>
       <th>BI_Share_of_TIV_Pct</th>
+      <th>Currency</th>
     </tr>
   </thead>
   <tbody>
@@ -15767,7 +15869,6 @@ dtype: int64</pre>
       <td>High</td>
       <td>Rivers &amp; Sea</td>
       <td>...</td>
-      <td>2700000</td>
       <td>17650000</td>
       <td>17650000</td>
       <td>OK</td>
@@ -15777,6 +15878,7 @@ dtype: int64</pre>
       <td>None</td>
       <td>No</td>
       <td>15.30</td>
+      <td>Great British Pound</td>
     </tr>
     <tr>
       <th>55</th>
@@ -15791,7 +15893,6 @@ dtype: int64</pre>
       <td>Medium</td>
       <td>Rivers &amp; Sea + Surface Water</td>
       <td>...</td>
-      <td>4100000</td>
       <td>20900000</td>
       <td>20900000</td>
       <td>OK</td>
@@ -15801,10 +15902,11 @@ dtype: int64</pre>
       <td>Central</td>
       <td>No</td>
       <td>19.62</td>
+      <td>Great British Pound</td>
     </tr>
   </tbody>
 </table>
-<p>2 rows × 27 columns</p>
+<p>2 rows × 28 columns</p>
 </div>
 </div>
 
@@ -15831,7 +15933,7 @@ dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[63]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">missing_records</span><span class="p">[[</span><span class="s2">&quot;Location_ID&quot;</span><span class="p">,</span><span class="s2">&quot;Year_Built&quot;</span><span class="p">,</span><span class="s2">&quot;Construction_Code&quot;</span><span class="p">]]</span>
@@ -15852,7 +15954,7 @@ dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[63]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[18]:</div>
 
 
 
@@ -15955,7 +16057,7 @@ dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[64]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">missing_records_count</span><span class="o">=</span><span class="p">(</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Year_Built&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span> <span class="o">|</span> <span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Construction_Code&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">())</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -15977,7 +16079,7 @@ dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[64]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[19]:</div>
 
 
 
@@ -15997,7 +16099,7 @@ dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[65]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">missing_records_pct</span><span class="o">=</span><span class="n">missing_records_count</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">sov</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
@@ -16019,7 +16121,7 @@ dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[65]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[20]:</div>
 
 
 
@@ -16062,7 +16164,7 @@ dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[66]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">missing_yrbuilt</span><span class="o">=</span><span class="p">(</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Year_Built&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">())</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -16085,7 +16187,7 @@ dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[66]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[21]:</div>
 
 
 
@@ -16105,7 +16207,7 @@ dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[67]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">missing_constr</span><span class="o">=</span><span class="p">(</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Construction_Code&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">())</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -16128,7 +16230,7 @@ dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[67]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[22]:</div>
 
 
 
@@ -16171,7 +16273,7 @@ dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[68]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[23]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;cal_TIV&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sov</span><span class="p">[[</span><span class="s2">&quot;Building_TIV&quot;</span><span class="p">,</span> <span class="s2">&quot;Contents_TIV&quot;</span><span class="p">,</span> <span class="s2">&quot;EDP_IT_TIV&quot;</span><span class="p">,</span> <span class="s2">&quot;BI_TIV&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -16194,7 +16296,7 @@ dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[68]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[23]:</div>
 
 
 
@@ -16228,7 +16330,6 @@ dtype: int64</pre>
       <th>Flood_Risk_Band</th>
       <th>Primary_Flood_Source</th>
       <th>...</th>
-      <th>Reported_Total_TIV</th>
       <th>TIV_Check</th>
       <th>Sprinkler_Coverage_Pct</th>
       <th>Fire_Detection</th>
@@ -16236,6 +16337,7 @@ dtype: int64</pre>
       <th>Burglar_Alarm</th>
       <th>Vacant</th>
       <th>BI_Share_of_TIV_Pct</th>
+      <th>Currency</th>
       <th>cal_TIV</th>
       <th>TIV_check_cal</th>
     </tr>
@@ -16243,7 +16345,7 @@ dtype: int64</pre>
   <tbody>
   </tbody>
 </table>
-<p>0 rows × 29 columns</p>
+<p>0 rows × 30 columns</p>
 </div>
 </div>
 
@@ -16292,7 +16394,7 @@ dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[69]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[24]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;TIV_check_rep&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Total_TIV&quot;</span><span class="p">]</span><span class="o">-</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Reported_Total_TIV&quot;</span><span class="p">]</span>
@@ -16314,7 +16416,7 @@ dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[69]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[24]:</div>
 
 
 
@@ -16348,13 +16450,13 @@ dtype: int64</pre>
       <th>Flood_Risk_Band</th>
       <th>Primary_Flood_Source</th>
       <th>...</th>
-      <th>TIV_Check</th>
       <th>Sprinkler_Coverage_Pct</th>
       <th>Fire_Detection</th>
       <th>Smoke_Detection</th>
       <th>Burglar_Alarm</th>
       <th>Vacant</th>
       <th>BI_Share_of_TIV_Pct</th>
+      <th>Currency</th>
       <th>cal_TIV</th>
       <th>TIV_check_cal</th>
       <th>TIV_check_rep</th>
@@ -16374,13 +16476,13 @@ dtype: int64</pre>
       <td>High</td>
       <td>Rivers &amp; Sea + Surface Water</td>
       <td>...</td>
-      <td>ERROR</td>
       <td>100</td>
       <td>Central</td>
       <td>No</td>
       <td>None</td>
       <td>No</td>
       <td>33.33</td>
+      <td>Great British Pound</td>
       <td>75000000</td>
       <td>0</td>
       <td>3000000</td>
@@ -16398,20 +16500,20 @@ dtype: int64</pre>
       <td>Medium</td>
       <td>Rivers &amp; Sea</td>
       <td>...</td>
-      <td>ERROR</td>
       <td>0</td>
       <td>None</td>
       <td>Yes</td>
       <td>Central</td>
       <td>No</td>
       <td>24.38</td>
+      <td>Great British Pound</td>
       <td>14150000</td>
       <td>0</td>
       <td>-500000</td>
     </tr>
   </tbody>
 </table>
-<p>2 rows × 30 columns</p>
+<p>2 rows × 31 columns</p>
 </div>
 </div>
 
@@ -16440,7 +16542,7 @@ LOC073: Total_TIV is £500k lower than Reported_Total_TIV → overreported by £
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[70]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[25]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">2</span><span class="p">,</span><span class="mi">72</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Location_ID&quot;</span><span class="p">,</span><span class="s2">&quot;Building_TIV&quot;</span><span class="p">,</span> <span class="s2">&quot;Contents_TIV&quot;</span><span class="p">,</span> <span class="s2">&quot;EDP_IT_TIV&quot;</span><span class="p">,</span> <span class="s2">&quot;BI_TIV&quot;</span><span class="p">,</span> <span class="s2">&quot;Total_TIV&quot;</span><span class="p">,</span><span class="s2">&quot;Reported_Total_TIV&quot;</span><span class="p">]]</span>
@@ -16461,7 +16563,7 @@ LOC073: Total_TIV is £500k lower than Reported_Total_TIV → overreported by £
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[70]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[25]:</div>
 
 
 
@@ -16564,7 +16666,7 @@ LOC073: Total_TIV is £500k lower than Reported_Total_TIV → overreported by £
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[71]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[26]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">inconsistent_tiv_records</span><span class="o">=</span><span class="n">sov</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Building_TIV&quot;</span><span class="p">]</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Contents_TIV&quot;</span><span class="p">]</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;EDP_IT_TIV&quot;</span><span class="p">]</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;BI_TIV&quot;</span><span class="p">]</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">)</span> <span class="p">]</span>
@@ -16586,7 +16688,7 @@ LOC073: Total_TIV is £500k lower than Reported_Total_TIV → overreported by £
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[71]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[26]:</div>
 
 
 
@@ -16620,13 +16722,13 @@ LOC073: Total_TIV is £500k lower than Reported_Total_TIV → overreported by £
       <th>Flood_Risk_Band</th>
       <th>Primary_Flood_Source</th>
       <th>...</th>
-      <th>TIV_Check</th>
       <th>Sprinkler_Coverage_Pct</th>
       <th>Fire_Detection</th>
       <th>Smoke_Detection</th>
       <th>Burglar_Alarm</th>
       <th>Vacant</th>
       <th>BI_Share_of_TIV_Pct</th>
+      <th>Currency</th>
       <th>cal_TIV</th>
       <th>TIV_check_cal</th>
       <th>TIV_check_rep</th>
@@ -16635,7 +16737,7 @@ LOC073: Total_TIV is £500k lower than Reported_Total_TIV → overreported by £
   <tbody>
   </tbody>
 </table>
-<p>0 rows × 30 columns</p>
+<p>0 rows × 31 columns</p>
 </div>
 </div>
 
@@ -16673,7 +16775,7 @@ LOC073: Total_TIV is £500k lower than Reported_Total_TIV → overreported by £
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[72]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[27]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="p">[</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Year_Built&quot;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">2026</span><span class="p">]</span>
@@ -16694,7 +16796,7 @@ LOC073: Total_TIV is £500k lower than Reported_Total_TIV → overreported by £
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[72]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[27]:</div>
 
 
 
@@ -16728,13 +16830,13 @@ LOC073: Total_TIV is £500k lower than Reported_Total_TIV → overreported by £
       <th>Flood_Risk_Band</th>
       <th>Primary_Flood_Source</th>
       <th>...</th>
-      <th>TIV_Check</th>
       <th>Sprinkler_Coverage_Pct</th>
       <th>Fire_Detection</th>
       <th>Smoke_Detection</th>
       <th>Burglar_Alarm</th>
       <th>Vacant</th>
       <th>BI_Share_of_TIV_Pct</th>
+      <th>Currency</th>
       <th>cal_TIV</th>
       <th>TIV_check_cal</th>
       <th>TIV_check_rep</th>
@@ -16743,7 +16845,7 @@ LOC073: Total_TIV is £500k lower than Reported_Total_TIV → overreported by £
   <tbody>
   </tbody>
 </table>
-<p>0 rows × 30 columns</p>
+<p>0 rows × 31 columns</p>
 </div>
 </div>
 
@@ -16781,7 +16883,7 @@ LOC073: Total_TIV is £500k lower than Reported_Total_TIV → overreported by £
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[73]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[28]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="p">[</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Year_Built&quot;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">1800</span><span class="p">]</span>
@@ -16802,7 +16904,7 @@ LOC073: Total_TIV is £500k lower than Reported_Total_TIV → overreported by £
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[73]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[28]:</div>
 
 
 
@@ -16836,13 +16938,13 @@ LOC073: Total_TIV is £500k lower than Reported_Total_TIV → overreported by £
       <th>Flood_Risk_Band</th>
       <th>Primary_Flood_Source</th>
       <th>...</th>
-      <th>TIV_Check</th>
       <th>Sprinkler_Coverage_Pct</th>
       <th>Fire_Detection</th>
       <th>Smoke_Detection</th>
       <th>Burglar_Alarm</th>
       <th>Vacant</th>
       <th>BI_Share_of_TIV_Pct</th>
+      <th>Currency</th>
       <th>cal_TIV</th>
       <th>TIV_check_cal</th>
       <th>TIV_check_rep</th>
@@ -16851,7 +16953,7 @@ LOC073: Total_TIV is £500k lower than Reported_Total_TIV → overreported by £
   <tbody>
   </tbody>
 </table>
-<p>0 rows × 30 columns</p>
+<p>0 rows × 31 columns</p>
 </div>
 </div>
 
@@ -16889,7 +16991,7 @@ LOC073: Total_TIV is £500k lower than Reported_Total_TIV → overreported by £
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[74]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[29]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Occupancy&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -16910,7 +17012,7 @@ LOC073: Total_TIV is £500k lower than Reported_Total_TIV → overreported by £
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[74]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[29]:</div>
 
 
 
@@ -16939,7 +17041,7 @@ Name: Occupancy, dtype: int64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>The SOV contains 8 occupancy categories with no missing values. Occupancy labels seem consistent formatting wise for aggregation.</p>
+<p>The SOV contains 7 occupancy categories with no missing values. Occupancy labels are consistently formatted for aggregation.</p>
 
 </div>
 </div>
@@ -16971,7 +17073,7 @@ Name: Occupancy, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[75]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[30]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">portfolio_tiv</span><span class="o">=</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Total_TIV&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -16993,7 +17095,7 @@ Name: Occupancy, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[75]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[30]:</div>
 
 
 
@@ -17024,7 +17126,7 @@ Name: Occupancy, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[76]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[31]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Total_TIV&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
@@ -17045,7 +17147,7 @@ Name: Occupancy, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[76]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[31]:</div>
 
 
 
@@ -17076,7 +17178,7 @@ Name: Occupancy, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[77]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[32]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Total_TIV&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -17097,7 +17199,7 @@ Name: Occupancy, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[77]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[32]:</div>
 
 
 
@@ -17128,7 +17230,7 @@ Name: Occupancy, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[78]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[33]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">top_10_tiv</span><span class="o">=</span><span class="n">sov</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;Total_TIV&quot;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)[</span>
@@ -17157,7 +17259,7 @@ Name: Occupancy, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[79]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[34]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">top_10_tiv</span><span class="p">[</span><span class="s2">&quot;Total_TIV&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -17178,7 +17280,7 @@ Name: Occupancy, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[79]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[34]:</div>
 
 
 
@@ -17198,7 +17300,7 @@ Name: Occupancy, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[80]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[35]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">top_10_tiv_conc_pctg</span><span class="o">=</span><span class="p">(</span><span class="n">top_10_tiv</span><span class="p">[</span><span class="s2">&quot;Total_TIV&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Total_TIV&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="o">*</span><span class="mi">100</span>
@@ -17220,7 +17322,7 @@ Name: Occupancy, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[80]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[35]:</div>
 
 
 
@@ -17251,7 +17353,7 @@ Name: Occupancy, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[81]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[36]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Occupancy&quot;</span><span class="p">)[</span><span class="s2">&quot;Total_TIV&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -17272,7 +17374,7 @@ Name: Occupancy, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[81]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[36]:</div>
 
 
 
@@ -17323,7 +17425,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[82]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[37]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_centre_tiv</span><span class="o">=</span><span class="n">sov</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Occupancy&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;Data Centre&quot;</span><span class="p">,</span><span class="s2">&quot;Total_TIV&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -17346,7 +17448,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[82]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[37]:</div>
 
 
 
@@ -17389,7 +17491,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[83]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[38]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;City&quot;</span><span class="p">)[</span><span class="s2">&quot;Total_TIV&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -17410,7 +17512,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[83]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[38]:</div>
 
 
 
@@ -17471,7 +17573,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[84]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[39]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">top_5_cities_tiv</span><span class="o">=</span><span class="n">sov</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;City&quot;</span><span class="p">)[</span><span class="s2">&quot;Total_TIV&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
@@ -17493,7 +17595,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[84]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[39]:</div>
 
 
 
@@ -17536,7 +17638,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[85]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[40]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Flood_Risk_Band&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
@@ -17557,7 +17659,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[85]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[40]:</div>
 
 
 
@@ -17577,7 +17679,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[86]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[41]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Flood_Risk_Band&quot;</span><span class="p">)[</span><span class="s2">&quot;Total_TIV&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -17598,7 +17700,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[86]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[41]:</div>
 
 
 
@@ -17622,7 +17724,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[87]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[42]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">round</span><span class="p">((</span><span class="n">sov</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Flood_Risk_Band&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">&quot;High&quot;</span><span class="p">]),</span> <span class="s2">&quot;Total_TIV&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="o">/</span><span class="n">portfolio_tiv</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
@@ -17643,7 +17745,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[87]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[42]:</div>
 
 
 
@@ -17686,7 +17788,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[88]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[43]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">high_flood_risk_count</span><span class="o">=</span><span class="p">(</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Flood_Risk_Band&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;High&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -17708,7 +17810,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[88]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[43]:</div>
 
 
 
@@ -17740,7 +17842,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[89]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[44]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">high_flood_risk_avg</span><span class="o">=</span><span class="p">(</span><span class="n">sov</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Flood_Risk_Band&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;High&quot;</span><span class="p">,</span><span class="s2">&quot;Total_TIV&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -17762,7 +17864,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[89]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[44]:</div>
 
 
 
@@ -17784,7 +17886,7 @@ Name: Total_TIV, dtype: int64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Average TIV for high flood rsik locations is £32,132,857.14.</p>
+<p>Average TIV for high flood risk locations is £32,132,857.14.</p>
 
 </div>
 </div>
@@ -17805,7 +17907,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[90]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[45]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="p">[</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Flood_Risk_Band&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;High&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Occupancy&quot;</span><span class="p">)[</span><span class="s2">&quot;Total_TIV&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -17826,7 +17928,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[90]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[45]:</div>
 
 
 
@@ -17866,7 +17968,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[216]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[46]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -17970,7 +18072,7 @@ jp-needs-light-background
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[91]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[47]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Flood_Risk_Band&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;High&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;Total_TIV&quot;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -17991,7 +18093,7 @@ jp-needs-light-background
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[91]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[47]:</div>
 
 
 
@@ -18025,13 +18127,13 @@ jp-needs-light-background
       <th>Flood_Risk_Band</th>
       <th>Primary_Flood_Source</th>
       <th>...</th>
-      <th>TIV_Check</th>
       <th>Sprinkler_Coverage_Pct</th>
       <th>Fire_Detection</th>
       <th>Smoke_Detection</th>
       <th>Burglar_Alarm</th>
       <th>Vacant</th>
       <th>BI_Share_of_TIV_Pct</th>
+      <th>Currency</th>
       <th>cal_TIV</th>
       <th>TIV_check_cal</th>
       <th>TIV_check_rep</th>
@@ -18051,13 +18153,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Surface Water</td>
       <td>...</td>
-      <td>OK</td>
       <td>75</td>
       <td>Local</td>
       <td>No</td>
       <td>Central</td>
       <td>No</td>
       <td>14.85</td>
+      <td>Great British Pound</td>
       <td>160650000</td>
       <td>0</td>
       <td>0</td>
@@ -18075,13 +18177,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Rivers &amp; Sea + Surface Water</td>
       <td>...</td>
-      <td>OK</td>
       <td>100</td>
       <td>Local</td>
       <td>No</td>
       <td>Local</td>
       <td>No</td>
       <td>16.79</td>
+      <td>Great British Pound</td>
       <td>105100000</td>
       <td>0</td>
       <td>0</td>
@@ -18099,13 +18201,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Rivers &amp; Sea + Surface Water</td>
       <td>...</td>
-      <td>ERROR</td>
       <td>100</td>
       <td>Central</td>
       <td>No</td>
       <td>None</td>
       <td>No</td>
       <td>33.33</td>
+      <td>Great British Pound</td>
       <td>75000000</td>
       <td>0</td>
       <td>3000000</td>
@@ -18123,13 +18225,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Rivers &amp; Sea</td>
       <td>...</td>
-      <td>OK</td>
       <td>0</td>
       <td>None</td>
       <td>Yes</td>
       <td>Local</td>
       <td>No</td>
       <td>10.66</td>
+      <td>Great British Pound</td>
       <td>36100000</td>
       <td>0</td>
       <td>0</td>
@@ -18147,13 +18249,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Rivers &amp; Sea + Surface Water</td>
       <td>...</td>
-      <td>OK</td>
       <td>100</td>
       <td>Central</td>
       <td>No</td>
       <td>Central</td>
       <td>No</td>
       <td>17.15</td>
+      <td>Great British Pound</td>
       <td>35850000</td>
       <td>0</td>
       <td>0</td>
@@ -18171,13 +18273,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Rivers &amp; Sea + Surface Water</td>
       <td>...</td>
-      <td>OK</td>
       <td>75</td>
       <td>None</td>
       <td>Yes</td>
       <td>Local</td>
       <td>No</td>
       <td>12.11</td>
+      <td>Great British Pound</td>
       <td>35100000</td>
       <td>0</td>
       <td>0</td>
@@ -18195,13 +18297,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Rivers &amp; Sea</td>
       <td>...</td>
-      <td>OK</td>
       <td>0</td>
       <td>Local</td>
       <td>Yes</td>
       <td>Local</td>
       <td>Yes</td>
       <td>3.93</td>
+      <td>Great British Pound</td>
       <td>33050000</td>
       <td>0</td>
       <td>0</td>
@@ -18219,13 +18321,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Surface Water</td>
       <td>...</td>
-      <td>OK</td>
       <td>75</td>
       <td>None</td>
       <td>Yes</td>
       <td>Local</td>
       <td>No</td>
       <td>4.17</td>
+      <td>Great British Pound</td>
       <td>31200000</td>
       <td>0</td>
       <td>0</td>
@@ -18243,13 +18345,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Surface Water</td>
       <td>...</td>
-      <td>OK</td>
       <td>100</td>
       <td>Local</td>
       <td>Yes</td>
       <td>Local</td>
       <td>No</td>
       <td>7.72</td>
+      <td>Great British Pound</td>
       <td>30450000</td>
       <td>0</td>
       <td>0</td>
@@ -18267,13 +18369,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Rivers &amp; Sea + Surface Water</td>
       <td>...</td>
-      <td>OK</td>
       <td>100</td>
       <td>Central</td>
       <td>Yes</td>
       <td>Central</td>
       <td>No</td>
       <td>24.36</td>
+      <td>Great British Pound</td>
       <td>29350000</td>
       <td>0</td>
       <td>0</td>
@@ -18291,13 +18393,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Surface Water</td>
       <td>...</td>
-      <td>OK</td>
       <td>0</td>
       <td>Central</td>
       <td>No</td>
       <td>None</td>
       <td>No</td>
       <td>14.83</td>
+      <td>Great British Pound</td>
       <td>29000000</td>
       <td>0</td>
       <td>0</td>
@@ -18315,13 +18417,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Rivers &amp; Sea</td>
       <td>...</td>
-      <td>OK</td>
       <td>90</td>
       <td>None</td>
       <td>No</td>
       <td>Local</td>
       <td>No</td>
       <td>18.13</td>
+      <td>Great British Pound</td>
       <td>28400000</td>
       <td>0</td>
       <td>0</td>
@@ -18339,13 +18441,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Rivers &amp; Sea + Surface Water</td>
       <td>...</td>
-      <td>OK</td>
       <td>75</td>
       <td>Central</td>
       <td>No</td>
       <td>None</td>
       <td>No</td>
       <td>14.44</td>
+      <td>Great British Pound</td>
       <td>28400000</td>
       <td>0</td>
       <td>0</td>
@@ -18363,13 +18465,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Rivers &amp; Sea</td>
       <td>...</td>
-      <td>OK</td>
       <td>25</td>
       <td>Local</td>
       <td>Yes</td>
       <td>None</td>
       <td>No</td>
       <td>11.81</td>
+      <td>Great British Pound</td>
       <td>27950000</td>
       <td>0</td>
       <td>0</td>
@@ -18387,13 +18489,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Rivers &amp; Sea + Surface Water</td>
       <td>...</td>
-      <td>OK</td>
       <td>50</td>
       <td>None</td>
       <td>Yes</td>
       <td>Local</td>
       <td>No</td>
       <td>25.18</td>
+      <td>Great British Pound</td>
       <td>27400000</td>
       <td>0</td>
       <td>0</td>
@@ -18411,13 +18513,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Rivers &amp; Sea</td>
       <td>...</td>
-      <td>OK</td>
       <td>90</td>
       <td>Local</td>
       <td>Yes</td>
       <td>None</td>
       <td>No</td>
       <td>20.99</td>
+      <td>Great British Pound</td>
       <td>27150000</td>
       <td>0</td>
       <td>0</td>
@@ -18435,13 +18537,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Surface Water</td>
       <td>...</td>
-      <td>OK</td>
       <td>75</td>
       <td>Central</td>
       <td>Yes</td>
       <td>Local</td>
       <td>No</td>
       <td>5.60</td>
+      <td>Great British Pound</td>
       <td>26800000</td>
       <td>0</td>
       <td>0</td>
@@ -18459,13 +18561,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Rivers &amp; Sea</td>
       <td>...</td>
-      <td>OK</td>
       <td>0</td>
       <td>None</td>
       <td>No</td>
       <td>None</td>
       <td>No</td>
       <td>14.15</td>
+      <td>Great British Pound</td>
       <td>25800000</td>
       <td>0</td>
       <td>0</td>
@@ -18483,13 +18585,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Rivers &amp; Sea</td>
       <td>...</td>
-      <td>OK</td>
       <td>0</td>
       <td>Local</td>
       <td>No</td>
       <td>Central</td>
       <td>No</td>
       <td>16.23</td>
+      <td>Great British Pound</td>
       <td>24950000</td>
       <td>0</td>
       <td>0</td>
@@ -18507,13 +18609,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Rivers &amp; Sea</td>
       <td>...</td>
-      <td>OK</td>
       <td>100</td>
       <td>Local</td>
       <td>No</td>
       <td>None</td>
       <td>No</td>
       <td>7.35</td>
+      <td>Great British Pound</td>
       <td>24500000</td>
       <td>0</td>
       <td>0</td>
@@ -18531,13 +18633,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Rivers &amp; Sea + Surface Water</td>
       <td>...</td>
-      <td>OK</td>
       <td>0</td>
       <td>Local</td>
       <td>Yes</td>
       <td>None</td>
       <td>No</td>
       <td>21.97</td>
+      <td>Great British Pound</td>
       <td>24350000</td>
       <td>0</td>
       <td>0</td>
@@ -18555,13 +18657,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Rivers &amp; Sea</td>
       <td>...</td>
-      <td>OK</td>
       <td>25</td>
       <td>None</td>
       <td>Yes</td>
       <td>Central</td>
       <td>Yes</td>
       <td>7.38</td>
+      <td>Great British Pound</td>
       <td>23700000</td>
       <td>0</td>
       <td>0</td>
@@ -18579,13 +18681,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Rivers &amp; Sea</td>
       <td>...</td>
-      <td>OK</td>
       <td>25</td>
       <td>Local</td>
       <td>No</td>
       <td>Local</td>
       <td>No</td>
       <td>21.13</td>
+      <td>Great British Pound</td>
       <td>22950000</td>
       <td>0</td>
       <td>0</td>
@@ -18603,13 +18705,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Surface Water</td>
       <td>...</td>
-      <td>OK</td>
       <td>50</td>
       <td>None</td>
       <td>No</td>
       <td>Central</td>
       <td>No</td>
       <td>16.33</td>
+      <td>Great British Pound</td>
       <td>22050000</td>
       <td>0</td>
       <td>0</td>
@@ -18627,13 +18729,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Rivers &amp; Sea</td>
       <td>...</td>
-      <td>OK</td>
       <td>25</td>
       <td>None</td>
       <td>No</td>
       <td>Central</td>
       <td>No</td>
       <td>13.44</td>
+      <td>Great British Pound</td>
       <td>21950000</td>
       <td>0</td>
       <td>0</td>
@@ -18651,13 +18753,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Rivers &amp; Sea + Surface Water</td>
       <td>...</td>
-      <td>OK</td>
       <td>75</td>
       <td>Local</td>
       <td>No</td>
       <td>Central</td>
       <td>No</td>
       <td>33.26</td>
+      <td>Great British Pound</td>
       <td>21350000</td>
       <td>0</td>
       <td>0</td>
@@ -18675,13 +18777,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Surface Water</td>
       <td>...</td>
-      <td>OK</td>
       <td>100</td>
       <td>None</td>
       <td>No</td>
       <td>Central</td>
       <td>No</td>
       <td>24.81</td>
+      <td>Great British Pound</td>
       <td>19550000</td>
       <td>0</td>
       <td>0</td>
@@ -18699,13 +18801,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Surface Water</td>
       <td>...</td>
-      <td>OK</td>
       <td>0</td>
       <td>None</td>
       <td>No</td>
       <td>Local</td>
       <td>No</td>
       <td>35.01</td>
+      <td>Great British Pound</td>
       <td>18850000</td>
       <td>0</td>
       <td>0</td>
@@ -18723,13 +18825,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Rivers &amp; Sea + Surface Water</td>
       <td>...</td>
-      <td>OK</td>
       <td>100</td>
       <td>Local</td>
       <td>No</td>
       <td>None</td>
       <td>No</td>
       <td>35.12</td>
+      <td>Great British Pound</td>
       <td>18650000</td>
       <td>0</td>
       <td>0</td>
@@ -18747,13 +18849,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Rivers &amp; Sea</td>
       <td>...</td>
-      <td>OK</td>
       <td>50</td>
       <td>Local</td>
       <td>Yes</td>
       <td>None</td>
       <td>No</td>
       <td>15.30</td>
+      <td>Great British Pound</td>
       <td>17650000</td>
       <td>0</td>
       <td>0</td>
@@ -18771,13 +18873,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Rivers &amp; Sea + Surface Water</td>
       <td>...</td>
-      <td>OK</td>
       <td>25</td>
       <td>Central</td>
       <td>Yes</td>
       <td>None</td>
       <td>No</td>
       <td>27.38</td>
+      <td>Great British Pound</td>
       <td>17350000</td>
       <td>0</td>
       <td>0</td>
@@ -18795,13 +18897,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Rivers &amp; Sea</td>
       <td>...</td>
-      <td>OK</td>
       <td>90</td>
       <td>Central</td>
       <td>No</td>
       <td>Central</td>
       <td>No</td>
       <td>7.62</td>
+      <td>Great British Pound</td>
       <td>16400000</td>
       <td>0</td>
       <td>0</td>
@@ -18819,13 +18921,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Rivers &amp; Sea + Surface Water</td>
       <td>...</td>
-      <td>OK</td>
       <td>0</td>
       <td>Local</td>
       <td>No</td>
       <td>Central</td>
       <td>No</td>
       <td>23.99</td>
+      <td>Great British Pound</td>
       <td>13550000</td>
       <td>0</td>
       <td>0</td>
@@ -18843,13 +18945,13 @@ jp-needs-light-background
       <td>High</td>
       <td>Rivers &amp; Sea</td>
       <td>...</td>
-      <td>OK</td>
       <td>100</td>
       <td>None</td>
       <td>Yes</td>
       <td>None</td>
       <td>No</td>
       <td>11.42</td>
+      <td>Great British Pound</td>
       <td>12700000</td>
       <td>0</td>
       <td>0</td>
@@ -18867,20 +18969,20 @@ jp-needs-light-background
       <td>High</td>
       <td>Rivers &amp; Sea + Surface Water</td>
       <td>...</td>
-      <td>OK</td>
       <td>90</td>
       <td>Local</td>
       <td>No</td>
       <td>None</td>
       <td>No</td>
       <td>23.68</td>
+      <td>Great British Pound</td>
       <td>11400000</td>
       <td>0</td>
       <td>0</td>
     </tr>
   </tbody>
 </table>
-<p>35 rows × 30 columns</p>
+<p>35 rows × 31 columns</p>
 </div>
 </div>
 
@@ -18929,7 +19031,7 @@ jp-needs-light-background
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[92]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[48]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Postcode&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -18950,7 +19052,7 @@ jp-needs-light-background
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[92]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[48]:</div>
 
 
 
@@ -18970,7 +19072,7 @@ jp-needs-light-background
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[93]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[49]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="p">[</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Postcode&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;&quot;</span><span class="p">]</span>
@@ -18991,7 +19093,7 @@ jp-needs-light-background
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[93]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[49]:</div>
 
 
 
@@ -19025,13 +19127,13 @@ jp-needs-light-background
       <th>Flood_Risk_Band</th>
       <th>Primary_Flood_Source</th>
       <th>...</th>
-      <th>TIV_Check</th>
       <th>Sprinkler_Coverage_Pct</th>
       <th>Fire_Detection</th>
       <th>Smoke_Detection</th>
       <th>Burglar_Alarm</th>
       <th>Vacant</th>
       <th>BI_Share_of_TIV_Pct</th>
+      <th>Currency</th>
       <th>cal_TIV</th>
       <th>TIV_check_cal</th>
       <th>TIV_check_rep</th>
@@ -19040,7 +19142,7 @@ jp-needs-light-background
   <tbody>
   </tbody>
 </table>
-<p>0 rows × 30 columns</p>
+<p>0 rows × 31 columns</p>
 </div>
 </div>
 
@@ -19066,7 +19168,7 @@ jp-needs-light-background
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[94]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[50]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">postcode_pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;^[A-Z]{1,2}\d[A-Z\d]?\s\d[A-Z]</span><span class="si">{2}</span><span class="s2">$&quot;</span>
@@ -19089,7 +19191,7 @@ jp-needs-light-background
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[94]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[50]:</div>
 
 
 
@@ -19123,13 +19225,13 @@ jp-needs-light-background
       <th>Flood_Risk_Band</th>
       <th>Primary_Flood_Source</th>
       <th>...</th>
-      <th>TIV_Check</th>
       <th>Sprinkler_Coverage_Pct</th>
       <th>Fire_Detection</th>
       <th>Smoke_Detection</th>
       <th>Burglar_Alarm</th>
       <th>Vacant</th>
       <th>BI_Share_of_TIV_Pct</th>
+      <th>Currency</th>
       <th>cal_TIV</th>
       <th>TIV_check_cal</th>
       <th>TIV_check_rep</th>
@@ -19138,7 +19240,7 @@ jp-needs-light-background
   <tbody>
   </tbody>
 </table>
-<p>0 rows × 30 columns</p>
+<p>0 rows × 31 columns</p>
 </div>
 </div>
 
@@ -19187,7 +19289,7 @@ jp-needs-light-background
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[95]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[51]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Construction_Code&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -19208,7 +19310,7 @@ jp-needs-light-background
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[95]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[51]:</div>
 
 
 
@@ -19258,7 +19360,7 @@ Name: Construction_Code, dtype: int64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>On observing the 5 distinct construction classifications, Mixed Contruction seems insuffciently specific for model mapping and should be investigated further. Moreover, whether Steel Portal Frame and Steel Frame are equivalent descriptions should also be looked into.</p>
+<p>On observing the 5 distinct construction classifications, Mixed Construction seems insufficiently specific for model mapping and should be investigated further. Moreover, whether Steel Portal Frame and Steel Frame are equivalent descriptions should also be looked into.</p>
 
 </div>
 </div>
@@ -19279,7 +19381,7 @@ Name: Construction_Code, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[103]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[52]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Construction_Code&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;Mixed Construction&quot;</span><span class="p">,[</span><span class="s2">&quot;Location_ID&quot;</span><span class="p">,</span><span class="s2">&quot;Occupancy&quot;</span><span class="p">,</span><span class="s2">&quot;Year_Built&quot;</span><span class="p">,</span><span class="s2">&quot;Stories&quot;</span><span class="p">,</span><span class="s2">&quot;Floor_Area_sqft&quot;</span><span class="p">,</span><span class="s2">&quot;Total_TIV&quot;</span><span class="p">]]</span>
@@ -19300,7 +19402,7 @@ Name: Construction_Code, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[103]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[52]:</div>
 
 
 
@@ -19506,7 +19608,7 @@ Name: Construction_Code, dtype: int64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h5 id="12.2.3-Construction-%C3%97-Occupancy-Cross-tab">12.2.3 Construction &#215; Occupancy Cross-tab<a class="anchor-link" href="#12.2.3-Construction-%C3%97-Occupancy-Cross-tab">&#182;</a></h5>
+<h5 id="12.2.2-Construction-%C3%97-Occupancy-Cross-tab">12.2.2 Construction &#215; Occupancy Cross-tab<a class="anchor-link" href="#12.2.2-Construction-%C3%97-Occupancy-Cross-tab">&#182;</a></h5>
 </div>
 </div>
 </div>
@@ -19515,7 +19617,7 @@ Name: Construction_Code, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[118]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[53]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Construction_Code&quot;</span><span class="p">],</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Occupancy&quot;</span><span class="p">],</span> <span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -19536,7 +19638,7 @@ Name: Construction_Code, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[118]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[53]:</div>
 
 
 
@@ -19686,7 +19788,7 @@ Name: Construction_Code, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[121]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[54]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -19765,7 +19867,7 @@ jp-needs-light-background
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[122]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[55]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Stories&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
@@ -19786,7 +19888,7 @@ jp-needs-light-background
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[122]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[55]:</div>
 
 
 
@@ -19816,7 +19918,7 @@ Name: Stories, dtype: int64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Story counts range from 1 to 8, with 5-storey properties being the most common. The distribution appears plausible, with no obvious anomalous values requiring remediation.</p>
+<p>Storey counts range from 1 to 8, with 5-storey properties being the most common. The distribution appears plausible, with no obvious anomalous values requiring remediation.</p>
 
 </div>
 </div>
@@ -19837,7 +19939,7 @@ Name: Stories, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[123]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[56]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="p">[</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Floor_Area_sqft&quot;</span><span class="p">]</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">]</span>
@@ -19858,7 +19960,7 @@ Name: Stories, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[123]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[56]:</div>
 
 
 
@@ -19892,13 +19994,13 @@ Name: Stories, dtype: int64</pre>
       <th>Flood_Risk_Band</th>
       <th>Primary_Flood_Source</th>
       <th>...</th>
-      <th>TIV_Check</th>
       <th>Sprinkler_Coverage_Pct</th>
       <th>Fire_Detection</th>
       <th>Smoke_Detection</th>
       <th>Burglar_Alarm</th>
       <th>Vacant</th>
       <th>BI_Share_of_TIV_Pct</th>
+      <th>Currency</th>
       <th>cal_TIV</th>
       <th>TIV_check_cal</th>
       <th>TIV_check_rep</th>
@@ -19907,7 +20009,7 @@ Name: Stories, dtype: int64</pre>
   <tbody>
   </tbody>
 </table>
-<p>0 rows × 30 columns</p>
+<p>0 rows × 31 columns</p>
 </div>
 </div>
 
@@ -19922,7 +20024,7 @@ Name: Stories, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[124]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[57]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Floor_Area_sqft&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -19943,7 +20045,7 @@ Name: Stories, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[124]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[57]:</div>
 
 
 
@@ -19998,7 +20100,7 @@ Name: Floor_Area_sqft, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[128]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[58]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Sprinkler_Coverage_Pct&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
@@ -20019,7 +20121,7 @@ Name: Floor_Area_sqft, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[128]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[58]:</div>
 
 
 
@@ -20062,7 +20164,7 @@ Name: Floor_Area_sqft, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[130]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[59]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Fire_Detection&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -20083,7 +20185,7 @@ Name: Floor_Area_sqft, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[130]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[59]:</div>
 
 
 
@@ -20129,7 +20231,7 @@ Name: Fire_Detection, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[131]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[60]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Smoke_Detection&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -20150,7 +20252,7 @@ Name: Fire_Detection, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[131]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[60]:</div>
 
 
 
@@ -20195,7 +20297,7 @@ Name: Smoke_Detection, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[133]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[61]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Burglar_Alarm&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -20216,7 +20318,7 @@ Name: Smoke_Detection, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[133]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[61]:</div>
 
 
 
@@ -20262,7 +20364,7 @@ Name: Burglar_Alarm, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[134]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[62]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Vacant&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -20283,7 +20385,7 @@ Name: Burglar_Alarm, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[134]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[62]:</div>
 
 
 
@@ -20351,7 +20453,7 @@ Name: Vacant, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[136]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[63]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Stories&quot;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Floor_Area_sqft&quot;</span><span class="p">]</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">)]</span>
@@ -20372,7 +20474,7 @@ Name: Vacant, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[136]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[63]:</div>
 
 
 
@@ -20406,13 +20508,13 @@ Name: Vacant, dtype: int64</pre>
       <th>Flood_Risk_Band</th>
       <th>Primary_Flood_Source</th>
       <th>...</th>
-      <th>TIV_Check</th>
       <th>Sprinkler_Coverage_Pct</th>
       <th>Fire_Detection</th>
       <th>Smoke_Detection</th>
       <th>Burglar_Alarm</th>
       <th>Vacant</th>
       <th>BI_Share_of_TIV_Pct</th>
+      <th>Currency</th>
       <th>cal_TIV</th>
       <th>TIV_check_cal</th>
       <th>TIV_check_rep</th>
@@ -20421,7 +20523,7 @@ Name: Vacant, dtype: int64</pre>
   <tbody>
   </tbody>
 </table>
-<p>0 rows × 30 columns</p>
+<p>0 rows × 31 columns</p>
 </div>
 </div>
 
@@ -20436,7 +20538,7 @@ Name: Vacant, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[137]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[64]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Stories&quot;</span><span class="p">]</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Floor_Area_sqft&quot;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)]</span>
@@ -20457,7 +20559,7 @@ Name: Vacant, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[137]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[64]:</div>
 
 
 
@@ -20491,13 +20593,13 @@ Name: Vacant, dtype: int64</pre>
       <th>Flood_Risk_Band</th>
       <th>Primary_Flood_Source</th>
       <th>...</th>
-      <th>TIV_Check</th>
       <th>Sprinkler_Coverage_Pct</th>
       <th>Fire_Detection</th>
       <th>Smoke_Detection</th>
       <th>Burglar_Alarm</th>
       <th>Vacant</th>
       <th>BI_Share_of_TIV_Pct</th>
+      <th>Currency</th>
       <th>cal_TIV</th>
       <th>TIV_check_cal</th>
       <th>TIV_check_rep</th>
@@ -20506,7 +20608,7 @@ Name: Vacant, dtype: int64</pre>
   <tbody>
   </tbody>
 </table>
-<p>0 rows × 30 columns</p>
+<p>0 rows × 31 columns</p>
 </div>
 </div>
 
@@ -20556,7 +20658,7 @@ Name: Vacant, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[142]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[65]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;BI_share_check&quot;</span><span class="p">]</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;BI_Share_of_TIV_Pct&quot;</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;BI_TIV&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Total_TIV&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span>
@@ -20572,7 +20674,7 @@ Name: Vacant, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[143]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[66]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;BI_share_check&quot;</span><span class="p">]</span><span class="o">!=</span><span class="mi">0</span><span class="p">]</span>
@@ -20593,7 +20695,7 @@ Name: Vacant, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[143]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[66]:</div>
 
 
 
@@ -20627,12 +20729,12 @@ Name: Vacant, dtype: int64</pre>
       <th>Flood_Risk_Band</th>
       <th>Primary_Flood_Source</th>
       <th>...</th>
-      <th>Sprinkler_Coverage_Pct</th>
       <th>Fire_Detection</th>
       <th>Smoke_Detection</th>
       <th>Burglar_Alarm</th>
       <th>Vacant</th>
       <th>BI_Share_of_TIV_Pct</th>
+      <th>Currency</th>
       <th>cal_TIV</th>
       <th>TIV_check_cal</th>
       <th>TIV_check_rep</th>
@@ -20642,7 +20744,7 @@ Name: Vacant, dtype: int64</pre>
   <tbody>
   </tbody>
 </table>
-<p>0 rows × 31 columns</p>
+<p>0 rows × 32 columns</p>
 </div>
 </div>
 
@@ -20671,7 +20773,7 @@ Name: Vacant, dtype: int64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="12.-9-BI-Share-Validity">12. 9 BI Share Validity<a class="anchor-link" href="#12.-9-BI-Share-Validity">&#182;</a></h4>
+<h4 id="12.9-BI-Share-Validity">12.9 BI Share Validity<a class="anchor-link" href="#12.9-BI-Share-Validity">&#182;</a></h4>
 </div>
 </div>
 </div>
@@ -20680,7 +20782,7 @@ Name: Vacant, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[147]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[67]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;BI_Share_of_TIV_Pct&quot;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;BI_Share_of_TIV_Pct&quot;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">100</span><span class="p">)]</span>
@@ -20701,7 +20803,7 @@ Name: Vacant, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[147]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[67]:</div>
 
 
 
@@ -20735,12 +20837,12 @@ Name: Vacant, dtype: int64</pre>
       <th>Flood_Risk_Band</th>
       <th>Primary_Flood_Source</th>
       <th>...</th>
-      <th>Sprinkler_Coverage_Pct</th>
       <th>Fire_Detection</th>
       <th>Smoke_Detection</th>
       <th>Burglar_Alarm</th>
       <th>Vacant</th>
       <th>BI_Share_of_TIV_Pct</th>
+      <th>Currency</th>
       <th>cal_TIV</th>
       <th>TIV_check_cal</th>
       <th>TIV_check_rep</th>
@@ -20750,7 +20852,7 @@ Name: Vacant, dtype: int64</pre>
   <tbody>
   </tbody>
 </table>
-<p>0 rows × 31 columns</p>
+<p>0 rows × 32 columns</p>
 </div>
 </div>
 
@@ -20788,7 +20890,7 @@ Name: Vacant, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[161]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[68]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">location_id_check</span> <span class="o">=</span> <span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Location_ID&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">sov</span><span class="p">)</span>
@@ -20820,7 +20922,7 @@ Name: Vacant, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[162]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[69]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">qa_summary</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
@@ -20853,7 +20955,7 @@ Name: Vacant, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[163]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[70]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">qa_summary</span>
@@ -20874,7 +20976,7 @@ Name: Vacant, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[163]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[70]:</div>
 
 
 
@@ -20950,17 +21052,6 @@ Name: Vacant, dtype: int64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="13.-Geographic-enrichment">13. Geographic enrichment<a class="anchor-link" href="#13.-Geographic-enrichment">&#182;</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h4 id="13.1-Adding-%22Country%22-column">13.1 Adding "Country" column<a class="anchor-link" href="#13.1-Adding-%22Country%22-column">&#182;</a></h4>
 </div>
 </div>
@@ -20970,7 +21061,7 @@ Name: Vacant, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[165]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[71]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;Country&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;United Kingdom&quot;</span>
@@ -20997,7 +21088,7 @@ Name: Vacant, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[168]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[72]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="p">[</span><span class="n">sov</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Postcode&quot;</span><span class="p">],</span><span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
@@ -21018,7 +21109,7 @@ Name: Vacant, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[168]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[72]:</div>
 
 
 
@@ -21052,11 +21143,11 @@ Name: Vacant, dtype: int64</pre>
       <th>Flood_Risk_Band</th>
       <th>Primary_Flood_Source</th>
       <th>...</th>
-      <th>Fire_Detection</th>
       <th>Smoke_Detection</th>
       <th>Burglar_Alarm</th>
       <th>Vacant</th>
       <th>BI_Share_of_TIV_Pct</th>
+      <th>Currency</th>
       <th>cal_TIV</th>
       <th>TIV_check_cal</th>
       <th>TIV_check_rep</th>
@@ -21067,7 +21158,7 @@ Name: Vacant, dtype: int64</pre>
   <tbody>
   </tbody>
 </table>
-<p>0 rows × 32 columns</p>
+<p>0 rows × 33 columns</p>
 </div>
 </div>
 
@@ -21093,7 +21184,7 @@ Name: Vacant, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[169]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[73]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sov</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;County&quot;</span><span class="p">)[</span><span class="s2">&quot;Total_TIV&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -21114,7 +21205,7 @@ Name: Vacant, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[169]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[73]:</div>
 
 
 
@@ -21170,7 +21261,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[172]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[74]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">top_5_counties_tiv</span><span class="o">=</span><span class="n">sov</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;County&quot;</span><span class="p">)[</span><span class="s2">&quot;Total_TIV&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -21192,7 +21283,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[172]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[74]:</div>
 
 
 
@@ -21212,7 +21303,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[173]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[75]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">top_5_counties_tiv_share</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">top_5_counties_tiv</span><span class="o">/</span><span class="n">portfolio_tiv</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
@@ -21234,7 +21325,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[173]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[75]:</div>
 
 
 
@@ -21288,7 +21379,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[203]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[76]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">missing_cells</span> <span class="o">=</span> <span class="n">sov</span><span class="p">[</span><span class="n">sov</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
@@ -21316,7 +21407,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[204]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[77]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">open_exception_df</span>
@@ -21337,7 +21428,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[204]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[77]:</div>
 
 
 
@@ -21371,7 +21462,7 @@ Name: Total_TIV, dtype: int64</pre>
       <td>Year_Built</td>
     </tr>
     <tr>
-      <th>43</th>
+      <th>44</th>
       <td>LOC056</td>
       <td>Construction_Code</td>
     </tr>
@@ -21391,7 +21482,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[205]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[78]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">open_exception_df</span><span class="o">=</span><span class="n">open_exception_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;level_1&quot;</span><span class="p">:</span><span class="s2">&quot;Field&quot;</span><span class="p">})</span>
@@ -21407,7 +21498,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[206]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[79]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">open_exception_df</span><span class="p">[</span><span class="s2">&quot;Issue&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;Missing Value&quot;</span>
@@ -21431,7 +21522,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[206]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[79]:</div>
 
 
 
@@ -21471,7 +21562,7 @@ Name: Total_TIV, dtype: int64</pre>
       <td>Open</td>
     </tr>
     <tr>
-      <th>43</th>
+      <th>44</th>
       <td>LOC056</td>
       <td>Construction_Code</td>
       <td>Missing Value</td>
@@ -21494,7 +21585,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[207]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[80]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tiv_check_records</span><span class="o">=</span> <span class="n">sov</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;TIV_check_rep&quot;</span><span class="p">]</span><span class="o">!=</span><span class="mi">0</span><span class="p">]</span>
@@ -21516,7 +21607,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[207]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[80]:</div>
 
 
 
@@ -21550,11 +21641,11 @@ Name: Total_TIV, dtype: int64</pre>
       <th>Flood_Risk_Band</th>
       <th>Primary_Flood_Source</th>
       <th>...</th>
-      <th>Fire_Detection</th>
       <th>Smoke_Detection</th>
       <th>Burglar_Alarm</th>
       <th>Vacant</th>
       <th>BI_Share_of_TIV_Pct</th>
+      <th>Currency</th>
       <th>cal_TIV</th>
       <th>TIV_check_cal</th>
       <th>TIV_check_rep</th>
@@ -21576,11 +21667,11 @@ Name: Total_TIV, dtype: int64</pre>
       <td>High</td>
       <td>Rivers &amp; Sea + Surface Water</td>
       <td>...</td>
-      <td>Central</td>
       <td>No</td>
       <td>None</td>
       <td>No</td>
       <td>33.33</td>
+      <td>Great British Pound</td>
       <td>75000000</td>
       <td>0</td>
       <td>3000000</td>
@@ -21600,11 +21691,11 @@ Name: Total_TIV, dtype: int64</pre>
       <td>Medium</td>
       <td>Rivers &amp; Sea</td>
       <td>...</td>
-      <td>None</td>
       <td>Yes</td>
       <td>Central</td>
       <td>No</td>
       <td>24.38</td>
+      <td>Great British Pound</td>
       <td>14150000</td>
       <td>0</td>
       <td>-500000</td>
@@ -21613,7 +21704,7 @@ Name: Total_TIV, dtype: int64</pre>
     </tr>
   </tbody>
 </table>
-<p>2 rows × 32 columns</p>
+<p>2 rows × 33 columns</p>
 </div>
 </div>
 
@@ -21628,7 +21719,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[208]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[81]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tiv_check_records</span><span class="o">=</span> <span class="n">sov</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sov</span><span class="p">[</span><span class="s2">&quot;TIV_check_rep&quot;</span><span class="p">]</span><span class="o">!=</span><span class="mi">0</span><span class="p">]</span>
@@ -21651,7 +21742,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[208]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[81]:</div>
 
 
 
@@ -21714,7 +21805,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[209]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[82]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">open_exception_df</span><span class="p">,</span><span class="n">tiv_exceptions</span><span class="p">],</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -21735,7 +21826,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[209]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[82]:</div>
 
 
 
@@ -21814,7 +21905,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[201]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[83]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">construction_exceptions</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Field&quot;</span><span class="p">:</span><span class="s2">&quot;Construction_Code&quot;</span><span class="p">,</span><span class="s2">&quot;Category&quot;</span><span class="p">:[</span><span class="s2">&quot;Mixed Construction&quot;</span><span class="p">,</span><span class="s2">&quot;Steel Portal Frame&quot;</span><span class="p">],</span><span class="s2">&quot;Issue&quot;</span><span class="p">:[</span><span class="s2">&quot;Insufficient Information&quot;</span><span class="p">,</span><span class="s2">&quot;Similar to Steel Frame&quot;</span><span class="p">],</span><span class="s2">&quot;Status&quot;</span><span class="p">:</span><span class="s2">&quot;Open&quot;</span><span class="p">})</span>
@@ -21836,7 +21927,7 @@ Name: Total_TIV, dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[201]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[83]:</div>
 
 
 
